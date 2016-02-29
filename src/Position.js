@@ -122,7 +122,8 @@ class Position extends React.Component {
       overlay,
       target,
       container,
-      this.props.containerPadding
+      this.props.containerPadding,
+      this.props.avoidScrollAdjustment,
     ));
   }
 }
@@ -152,7 +153,11 @@ Position.propTypes = {
   /**
    * Whether the position should be changed on each update
    */
-  shouldUpdatePosition: React.PropTypes.bool
+  shouldUpdatePosition: React.PropTypes.bool,
+  /**
+   * Whether to prevent the element from moving the the visible part of the screen if the calculated position is off screen
+   */
+  avoidScrollAdjustment: React.PropTypes.bool
 };
 
 Position.displayName = 'Position';

@@ -31,6 +31,7 @@ class Overlay extends React.Component {
       , target
       , placement
       , shouldUpdatePosition
+      , avoidScrollAdjustment
       , rootClose
       , children
       , transition: Transition
@@ -49,7 +50,7 @@ class Overlay extends React.Component {
     // Position is be inner-most because it adds inline styles into the child,
     // which the other wrappers don't forward correctly.
     child = (
-      <Position {...{container, containerPadding, target, placement, shouldUpdatePosition}}>
+      <Position {...{container, containerPadding, target, placement, shouldUpdatePosition, avoidScrollAdjustment}}>
         {child}
       </Position>
     );

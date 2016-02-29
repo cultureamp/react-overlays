@@ -30,7 +30,7 @@ const utils = {
     return offset;
   },
 
-  calcOverlayPosition(placement, overlayNode, target, container, padding) {
+  calcOverlayPosition(placement, overlayNode, target, container, padding, avoidScrollAdjustment) {
     const childOffset = utils.getPosition(target, container);
 
     const { height: overlayHeight, width: overlayWidth } = getOffset(overlayNode);
@@ -48,7 +48,9 @@ const utils = {
 
       const topDelta = getTopDelta(positionTop, overlayHeight, container, padding);
 
-      positionTop += topDelta;
+      if (!avoidScrollAdjustment) {
+        positionTop += topDelta;
+      }
       arrowOffsetTop = 50 * (1 - 2 * topDelta / overlayHeight) + '%';
       arrowOffsetLeft = void 0;
 
@@ -62,7 +64,9 @@ const utils = {
       }
 
       const leftDelta = getLeftDelta(positionLeft, overlayWidth, container, padding);
-      positionLeft += leftDelta;
+      if (!avoidScrollAdjustment) {
+        positionLeft += leftDelta;
+      }
       arrowOffsetLeft = 50 * (1 - 2 * leftDelta / overlayWidth) + '%';
       arrowOffsetTop = void 0;
     } else {
